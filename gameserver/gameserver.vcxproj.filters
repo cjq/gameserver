@@ -34,6 +34,9 @@
     <Filter Include="public\lock">
       <UniqueIdentifier>{060ce8c4-51fc-46dc-851c-25e9fed2816b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="public\socket">
+      <UniqueIdentifier>{7ac3a581-d57a-4be5-ac93-5390ac6d81fb}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -60,6 +63,9 @@
     <ClCompile Include="..\public\timer\timermgr.cpp">
       <Filter>public\timer</Filter>
     </ClCompile>
+    <ClCompile Include="..\public\socket\socketopt.cpp">
+      <Filter>public\socket</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\public\buffer\buffer.h">
@@ -85,6 +91,9 @@
     </ClInclude>
     <ClInclude Include="..\public\util\util.h">
       <Filter>public\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\public\socket\socketopt.h">
+      <Filter>public\socket</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
