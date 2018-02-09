@@ -8,6 +8,7 @@
 #include <stdio.h>
 #include <sys/types.h>
 #include <stdlib.h>
+#include "../util/util.h"
 
 #define NONE         "\033[m"
 #define RED          "\033[0;32;31m"
@@ -25,8 +26,6 @@
 #define YELLOW       "\033[1;33m"
 #define LIGHT_GRAY   "\033[0;37m"
 #define WHITE        "\033[1;37m"
-
-#define filename(x) strrchr(x,'/')?strrchr(x,'/')+1:x
 
 class CLog
 {

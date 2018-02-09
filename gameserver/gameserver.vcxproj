@@ -64,6 +64,24 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\public\buffer\buffer.cpp" />
+    <ClCompile Include="..\public\buffer\circularbuffer.cpp" />
+    <ClCompile Include="..\public\config\config.cpp" />
+    <ClCompile Include="..\public\lock\lock.cpp" />
+    <ClCompile Include="..\public\log\log.cpp" />
+    <ClCompile Include="..\public\timer\timer.cpp" />
+    <ClCompile Include="..\public\timer\timermgr.cpp" />
+    <ClCompile Include="main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\public\buffer\buffer.h" />
+    <ClInclude Include="..\public\buffer\circularbuffer.h" />
+    <ClInclude Include="..\public\config\config.h" />
+    <ClInclude Include="..\public\lock\lock.h" />
+    <ClInclude Include="..\public\log\log.h" />
+    <ClInclude Include="..\public\timer\timer.h" />
+    <ClInclude Include="..\public\timer\timermgr.h" />
+    <ClInclude Include="..\public\util\util.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

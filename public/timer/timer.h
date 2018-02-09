@@ -69,20 +69,44 @@ typedef void (*timer_cb)(timer* tmr, void* param);
 class CTimer
 {
 public:
+	/*
+	* 检测定时器是否在运行
+	*/
 	static boolean_t timer_running(timer* tmr);
 
+	/*
+	* 初始化定时器
+	*/
 	static void timer_prepare(timer* tmr);
 
+	/*
+	* 打印定时器相关信息
+	*/
 	static void timer_stats(const wheel_timer* wtmr);
 
+	/*
+	* 添加一个定时器并启动
+	*/
 	static TIMER_STATUE timer_start(wheel_timer* wtmr, timer* tmr, uint32_t delay, uint32_t periodic_delay, timer_cb cb, void* param);
 
+	/*
+	* 暂定定时器
+	*/
 	static TIMER_STATUE timer_stop(wheel_timer* wtmr, timer* tmr);
 
+	/*
+	* 销毁所有定时器
+	*/
 	static TIMER_STATUE timer_destroy(wheel_timer* wtmr);
 
+	/*
+	* 创建定时器
+	*/
 	static TIMER_STATUE timer_create(uint32_t wheel_size, uint32_t granularity, const char* name, wheel_timer** wtmr);
 
+	/*
+	* 定时器定时执行函数
+	*/
 	static void timer_tick(wheel_timer* wtmr);
 };
 

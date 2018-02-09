@@ -3,16 +3,39 @@
 #include <unistd.h>
 #include <time.h>
 #include <sys/time.h>
+#include <sys/epoll.h>
+#include <stdio.h>
+#include "../log/log.h"
+#include "../util/util.h"
 
+wheel_timer* CTimerMgr::s_timer_handle = 0;
 
-CTimerMgr::CTimerMgr()
+CTimerMgr::CTimerMgr() : m_bRunning(false)
 {
-	pthread_create(&threadid, NULL, &CTimerMgr::timer_out_thread, this);
+	
 }
 
 CTimerMgr::~CTimerMgr()
 {
 
+}
+
+bool CTimerMgr::initTimer()
+{
+	if(pthread_create(&threadid, NULL, &CTimerMgr::timer_out_thread, this))
+	{
+		perror("create check_log_file thread error");
+	}
+
+	int ret = CTimer::timer_create(512, 100, "timer", &s_timer_handle);
+	if (TIMER_STATUE_OK != ret)
+	{
+		printf("CTimerMgr::initTimer ret:%d\n", ret);
+		return false;
+	}
+	m_bRunning = true;
+	printf("CTimerMgr::initTimer running:%d\n", m_bRunning);
+	return true;
 }
 
 CTimerMgr& CTimerMgr::getInstance()
@@ -27,6 +50,7 @@ bool CTimerMgr::addTimer(uint32_t timerid, uint32_t delay, uint32_t periodic_del
 	timer *tmr = new timer();
 	if (NULL == tmr)
 	{
+		printf("CTimerMgr::addTimer timerid:%d err\n", timerid);
 		return false;
 	}
 
@@ -35,6 +59,10 @@ bool CTimerMgr::addTimer(uint32_t timerid, uint32_t delay, uint32_t periodic_del
 	if (TIMER_STATUE_OK == ret)
 	{
 		m_mapTimers.insert(std::make_pair(timerid, tmr));
+	}
+	else
+	{
+		printf("CTimerMgr::addTimer timerid:%d timer_start err:%d\n", timerid, ret);
 	}
 	return ret == TIMER_STATUE_OK ? true : false;
 }
@@ -55,6 +83,7 @@ void CTimerMgr::delete_all_timer()
 {
 	CSafeLock l(&m_lock);
 	CTimer::timer_destroy(s_timer_handle);
+	s_timer_handle = NULL;
 }
 
 void* CTimerMgr::timer_out_thread(void* p)
@@ -69,5 +98,35 @@ void* CTimerMgr::timer_out_thread(void* p)
 
 void CTimerMgr::_thread_handle()
 {
+	if (!m_bRunning)
+	{
+		printf("CTimerMgr::_thread_handle no running\n");
+		return;
+	}
+	printf("s_timer_handle:%p\n", s_timer_handle);
+	int ep = epoll_create(10);
+	if (-1 == ep)
+	{
+		printf("epoll_create timer fail\n");
+		return;
+	}
 
+	epoll_event events[1];
+	while (1)
+	{
+		if (-1 == epoll_wait(ep, events, 1, 100))
+		{
+			printf("wait epoll error\n");
+			return;
+		}
+
+		CTimer::timer_tick(s_timer_handle);
+		INFO("CTimerMgr::_thread_handle");
+	}
 }
+
+void CTimerMgr::print_timer_info()
+{
+	CTimer::timer_stats(s_timer_handle);
+}
+

@@ -13,5 +13,78 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="public">
+      <UniqueIdentifier>{d32bc269-df0e-4bec-a0a6-058dedf3ba29}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="public\util">
+      <UniqueIdentifier>{11c6456b-f9fa-4286-abd9-7667e546336f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="public\buffer">
+      <UniqueIdentifier>{bdb69c96-36a7-4e32-884e-0478291b0a5c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="public\timer">
+      <UniqueIdentifier>{884c1ac1-da4e-455e-b541-c2d35ac0b06e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="public\config">
+      <UniqueIdentifier>{1ed7f31e-5cf9-433f-b128-5c6c5b53e7a2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="public\log">
+      <UniqueIdentifier>{84f3c0bb-8a1b-4fec-a683-538c3a9e329d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="public\lock">
+      <UniqueIdentifier>{060ce8c4-51fc-46dc-851c-25e9fed2816b}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\public\buffer\buffer.cpp">
+      <Filter>public\buffer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\public\buffer\circularbuffer.cpp">
+      <Filter>public\buffer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\public\config\config.cpp">
+      <Filter>public\config</Filter>
+    </ClCompile>
+    <ClCompile Include="..\public\log\log.cpp">
+      <Filter>public\log</Filter>
+    </ClCompile>
+    <ClCompile Include="..\public\lock\lock.cpp">
+      <Filter>public\lock</Filter>
+    </ClCompile>
+    <ClCompile Include="..\public\timer\timer.cpp">
+      <Filter>public\timer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\public\timer\timermgr.cpp">
+      <Filter>public\timer</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\public\buffer\buffer.h">
+      <Filter>public\buffer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\public\buffer\circularbuffer.h">
+      <Filter>public\buffer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\public\config\config.h">
+      <Filter>public\config</Filter>
+    </ClInclude>
+    <ClInclude Include="..\public\log\log.h">
+      <Filter>public\log</Filter>
+    </ClInclude>
+    <ClInclude Include="..\public\lock\lock.h">
+      <Filter>public\lock</Filter>
+    </ClInclude>
+    <ClInclude Include="..\public\timer\timer.h">
+      <Filter>public\timer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\public\timer\timermgr.h">
+      <Filter>public\timer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\public\util\util.h">
+      <Filter>public\util</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include <string.h>
 
+// 把定时器插入到轮询定时器的槽位中
 static void tmr_enqueue(wheel_timer* wtmr, timer* tmr, uint32_t delay)
 {
 	timer_link_t *prev, *spoke;

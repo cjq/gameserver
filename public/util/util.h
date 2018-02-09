@@ -1,6 +1,8 @@
 #ifndef __PUBLIC_UTIL_H__
 #define __PUBLIC_UTIL_H__
 
+#include "string.h"
+
 #ifndef TRUE
 #define TRUE (1)
 #endif
@@ -56,6 +58,8 @@ typedef unsigned long ulong;
 #ifndef ulonglong
 typedef unsigned long long ulonglong;
 #endif // !ulonglong
+
+#define filename(x) strrchr(x,'/')?strrchr(x,'/')+1:x
 
 #endif
 
