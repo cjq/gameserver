@@ -1,4 +1,7 @@
 #include "socketopt.h"
+#include "../log/log.h"
+
+int clientsize = 20*1024;
 
 int CSocketOpts::createSocketFD()
 {
@@ -63,4 +66,35 @@ bool CSocketOpts::setRecvBufferSize(int fd, uint32_t size)
 bool CSocketOpts::setSendBufferSize(int fd, uint32_t size)
 {
 	return 0 == setsockopt(fd, SOL_SOCKET, SO_SNDBUF, (const char*)&size, sizeof(size));
+}
+
+bool CSocketOpts::initSocket(int fd)
+{
+	//设置非阻塞
+	if (!CSocketOpts::setNoBlocking(fd))
+	{
+		INFO("set noblocking error fd:%d", fd);
+		return false;
+	}
+	//设置发送缓冲区
+	if (!CSocketOpts::setSendBufferSize(fd, clientsize))
+	{
+		INFO("set sendbufsize fd:%d, clientsize:%d error", fd, clientsize);
+		return false;
+	}
+
+	//设置接收缓冲区
+	if (!CSocketOpts::setRecvBufferSize(fd, clientsize))
+	{
+		INFO("set recvbufsize fd:%d, clientsize:%d error", fd, clientsize);
+		return false;
+	}
+
+	//设置消息立即发送
+	if (!CSocketOpts::openBufferNoDelay(fd))
+	{
+		INFO("set nodelay fd:%d error", fd);
+		return false;
+	}
+	return true;
 }

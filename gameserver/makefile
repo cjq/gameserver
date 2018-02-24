@@ -1,18 +1,15 @@
 
 EXECUTABLE	:= main
 SRCEXTS		:=.c .cpp
-LIBDIR		:=/usr/lib64/mysql /home/wangjw/back/mjsdk
+LIBDIR		:=/usr/lib64/mysql
 LIBS		:=z pthread
-SUBDIR		:= $(shell find ../../public -maxdepth 3 -type d)
-INCLUDES	:=. ../public ../public/util ../public/config ../public/log ../public/buffer ../public/timer ../public/lock ../public/socket
-SRCDIR		:=. ../public ../public/config ../public/log ../public/buffer ../public/timer ../public/lock ../public/socket
-
-#递归获取子目录
-SRCDIR		:= $(SUBDIR) $(SRCDIR)
+SUBDIR		:= $(shell find ../public -maxdepth 3 -type d)
+INCLUDES	:=.  $(SUBDIR)
+SRCDIR		:=.  $(SUBDIR)
 
 
 CC			:=g++ -Wall 
-CFLAGS		:=-g -DGAME_ID=47 -DNOPROTOCOLOG
+CFLAGS		:=-g -DNOPROTOCOLOG
 CFLAGS		+=-DPEIPAI_TEST
 CPPFLAGS	:= $(CFLAGS)
 CPPFLAGS	+= $(addprefix -I,$(INCLUDES))

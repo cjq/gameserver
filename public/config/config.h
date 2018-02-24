@@ -30,4 +30,5 @@ private:
 
 #define ConfigMgr CConfigMgr::getInstance()
 
+
 #endif

@@ -64,4 +64,7 @@ private:
 #define INFO(fmt, args...) \
 	CLogMgr.log(1, "", filename(__FILE__), __LINE__, fmt, ##args);
 
+#define ERROR(fmt, args...)\
+	CLogMgr.log(3, RED, filename(__FILE__),__LINE__, fmt, ##args);
+
 #endif

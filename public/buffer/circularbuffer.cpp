@@ -75,16 +75,17 @@ int CCircularBuffer::write(void* buf, int len)
 	int wantToWrite = len;
 	int hasSend = 0;
 	char* pSend = (char*)buf;
+	INFO("prepare write=%d, size=%d", wantToWrite, m_nSize);
 	while (wantToWrite > 0)
 	{
-		while (canWriteLen = getCanWriteLen() <= 0)
+		while ((canWriteLen = getCanWriteLen()) <= 0)
 		{
 			if (!reallocMem())
 			{
 				return 0;
 			}
 		}
-
+		INFO("prepare1 write=%d, canWriteLen=%d", wantToWrite, canWriteLen);
 		if (canWriteLen >= wantToWrite)
 		{
 			memcpy(&m_buf[m_nWritePos], &pSend[hasSend], wantToWrite);
@@ -99,6 +100,7 @@ int CCircularBuffer::write(void* buf, int len)
 			hasSend += canWriteLen;
 			wantToWrite -= canWriteLen;
 		}
+		INFO("prepare2 write=%d, canWriteLen=%d", wantToWrite, canWriteLen);
 	}
 	return hasSend;
 }
@@ -224,4 +226,14 @@ void CCircularBuffer::setCurWritePos(int len)
 			m_nWritePos = m_nWritePos - m_nSize;
 		}
 	}
+}
+
+char* CCircularBuffer::getWritePtr()
+{
+	return &m_buf[m_nWritePos];
+}
+
+char* CCircularBuffer::getReadPtr()
+{
+	return &m_buf[m_nReadPos];
 }

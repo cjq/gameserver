@@ -71,6 +71,11 @@ public:
 	* 设置文件描述符的发送缓冲区大小
 	*/
 	static bool setSendBufferSize(int fd, uint32_t size);
+
+	/*
+	* 初始化socket
+	*/
+	static bool initSocket(int fd);
 };
 
 #endif

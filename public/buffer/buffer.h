@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <pthread.h>
+#include <vector>
 #include "circularbuffer.h"
 
 class CBuffer
@@ -21,5 +22,7 @@ private:
 	pthread_cond_t  m_cond;
 	pthread_mutex_t m_mutex;
 };
+
+typedef std::vector<CBuffer*> DataQueueList;
 
 #endif

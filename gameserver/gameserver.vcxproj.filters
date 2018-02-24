@@ -37,6 +37,15 @@
     <Filter Include="public\socket">
       <UniqueIdentifier>{7ac3a581-d57a-4be5-ac93-5390ac6d81fb}</UniqueIdentifier>
     </Filter>
+    <Filter Include="public\structmsg">
+      <UniqueIdentifier>{bf2c6110-6a21-4620-9462-8578c0c92def}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="public\logicbase">
+      <UniqueIdentifier>{525cb771-a382-4d8a-aa0d-1d28b4512d22}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="gate">
+      <UniqueIdentifier>{6d1b6895-d6e2-49de-8aaa-255d3e46a689}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -66,6 +75,21 @@
     <ClCompile Include="..\public\socket\socketopt.cpp">
       <Filter>public\socket</Filter>
     </ClCompile>
+    <ClCompile Include="..\public\socket\servermgr.cpp">
+      <Filter>public\socket</Filter>
+    </ClCompile>
+    <ClCompile Include="..\public\socket\socket.cpp">
+      <Filter>public\socket</Filter>
+    </ClCompile>
+    <ClCompile Include="..\public\logicbase\logicbase.cpp">
+      <Filter>public\logicbase</Filter>
+    </ClCompile>
+    <ClCompile Include="..\gate\gatelogic.cpp">
+      <Filter>gate</Filter>
+    </ClCompile>
+    <ClCompile Include="..\gate\main.cpp">
+      <Filter>gate</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\public\buffer\buffer.h">
@@ -94,6 +118,27 @@
     </ClInclude>
     <ClInclude Include="..\public\socket\socketopt.h">
       <Filter>public\socket</Filter>
+    </ClInclude>
+    <ClInclude Include="..\public\socket\servermgr.h">
+      <Filter>public\socket</Filter>
+    </ClInclude>
+    <ClInclude Include="..\public\socket\socket.h">
+      <Filter>public\socket</Filter>
+    </ClInclude>
+    <ClInclude Include="..\public\structmsg\defineinfo.h">
+      <Filter>public\structmsg</Filter>
+    </ClInclude>
+    <ClInclude Include="..\public\structmsg\msgbase.h">
+      <Filter>public\structmsg</Filter>
+    </ClInclude>
+    <ClInclude Include="..\public\structmsg\structmsg.h">
+      <Filter>public\structmsg</Filter>
+    </ClInclude>
+    <ClInclude Include="..\public\logicbase\logicbase.h">
+      <Filter>public\logicbase</Filter>
+    </ClInclude>
+    <ClInclude Include="..\gate\gatelogic.h">
+      <Filter>gate</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

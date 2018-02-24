@@ -2,6 +2,8 @@
 #define __PUBLIC_UTIL_H__
 
 #include "string.h"
+#include "../config/config.h"
+#include "../lock/lock.h"
 
 #ifndef TRUE
 #define TRUE (1)
@@ -60,6 +62,35 @@ typedef unsigned long long ulonglong;
 #endif // !ulonglong
 
 #define filename(x) strrchr(x,'/')?strrchr(x,'/')+1:x
+
+
+#define getConfigInt(name) do \
+{ \
+	std::string strSize; \
+	ConfigMgr.getConfigInfo(name, strSize); \
+	if (!strSize.empty()) \
+	{ \
+	configValue = atoi(strSize.c_str()); \
+	} \
+} while (0);
+
+#define ZERO(v) do \
+{ \
+	memset(&v, 0, sizeof(v)); \
+} while (0);
+
+
+#define LOCK(l) do \
+{ \
+	CSafeLock tmplock(&l); \
+} while (0);
+
+
+#define ZEROSTRUCT(st) \
+	st() \
+	{ \
+		memset(this, 0 , sizeof(st)); \
+	} 
 
 #endif
 

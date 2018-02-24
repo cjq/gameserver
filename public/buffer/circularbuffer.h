@@ -60,6 +60,21 @@ public:
 	**/
 	void setCurReadPos(int len);
 
+	/*
+	* 获取写的位置
+	*/
+	char* getWritePtr();
+
+	/*
+	* 获取读的位置
+	*/
+	char* getReadPtr();
+
+	/*
+	* 获取数据长度
+	*/
+	int getDataLen() {return m_nDataSize;}
+
 private:
 	char* m_buf;		// 缓冲区数据
 	int m_nReadPos;		// 读取数据的位置

@@ -10,6 +10,8 @@ static void a_timer(timer* tmr, void* param)
            __FUNCTION__);
 }
 
+int BUF_SIZE = 0;
+
 int main(int argc, char* argv[])
 {
 	ConfigMgr.parseConfig(argv[1]);
@@ -17,6 +19,11 @@ int main(int argc, char* argv[])
 	std::string str;
 	ConfigMgr.getConfigInfo("FILE_SIZE", str);
 	std::cout<<"ConfigMgr filesize:" << str <<std::endl;
+
+	int configValue = 0;
+	getConfigInt("BUF_SIZE");
+	BUF_SIZE = configValue;
+	std::cout<<"define BUF_SIZE:"<< BUF_SIZE <<std::endl;
 
 	CLogMgr.init_log();
 	TimerMgr.initTimer();
