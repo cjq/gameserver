@@ -18,15 +18,13 @@ int CBuffer::write(void* buf, int len)
 	{
 		return 0;
 	}
-	printf("start write\n");
+
 	pthread_mutex_lock(&m_mutex);
 
 	int ret = m_buf.write(buf, len);
-	printf("write ret=%d\n", ret);
 
 	pthread_cond_signal(&m_cond);
 	pthread_mutex_unlock(&m_mutex);
-	printf("end write\n");
 	return ret;
 }
 
@@ -39,7 +37,7 @@ int CBuffer::read(void* buf, int len)
 	{
 		if (m_buf.getDataLen() < headLen)
 		{
-			printf("cur=%d, headlen=%d", m_buf, headLen);
+			printf("cur=%d, headlen=%d\n", m_buf.getDataLen(), headLen);
 			pthread_cond_wait(&m_cond, &m_mutex);
 		}
 		else

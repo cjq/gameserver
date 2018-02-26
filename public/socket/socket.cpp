@@ -1,5 +1,6 @@
 #include "socket.h"
 #include "socketopt.h"
+#include "../log/log.h"
 
 #define HTTPHEADLEN 4
 
@@ -65,7 +66,7 @@ int CSocket::recv()
 		}
 
 		readLen = read(m_fd, m_readBuf.getWritePtr(), canWriteLen);
-
+		INFO("CSocket::recv() readLen=%d", readLen);
 		if (readLen < 0)
 		{
 			if (errno == EAGAIN || errno == EWOULDBLOCK || errno == EINTR)

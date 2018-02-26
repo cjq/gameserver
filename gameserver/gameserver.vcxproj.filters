@@ -46,6 +46,9 @@
     <Filter Include="gate">
       <UniqueIdentifier>{6d1b6895-d6e2-49de-8aaa-255d3e46a689}</UniqueIdentifier>
     </Filter>
+    <Filter Include="client">
+      <UniqueIdentifier>{d12e8b3b-ec23-4b74-86b2-c170c4e69c49}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -89,6 +92,12 @@
     </ClCompile>
     <ClCompile Include="..\gate\main.cpp">
       <Filter>gate</Filter>
+    </ClCompile>
+    <ClCompile Include="..\client\clientlogic.cpp">
+      <Filter>client</Filter>
+    </ClCompile>
+    <ClCompile Include="..\client\main.cpp">
+      <Filter>client</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -139,6 +148,9 @@
     </ClInclude>
     <ClInclude Include="..\gate\gatelogic.h">
       <Filter>gate</Filter>
+    </ClInclude>
+    <ClInclude Include="..\client\clientlogic.h">
+      <Filter>client</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

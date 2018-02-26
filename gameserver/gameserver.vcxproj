@@ -64,6 +64,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\client\clientlogic.cpp" />
+    <ClCompile Include="..\client\main.cpp" />
     <ClCompile Include="..\gate\gatelogic.cpp" />
     <ClCompile Include="..\gate\main.cpp" />
     <ClCompile Include="..\public\buffer\buffer.cpp" />
@@ -80,6 +82,7 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\client\clientlogic.h" />
     <ClInclude Include="..\gate\gatelogic.h" />
     <ClInclude Include="..\public\buffer\buffer.h" />
     <ClInclude Include="..\public\buffer\circularbuffer.h" />

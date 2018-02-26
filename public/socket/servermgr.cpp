@@ -341,18 +341,16 @@ void CServerManager::_acceptThread()
 					ZERO(tmpEvent);
 					tmpEvent.data.ptr = pInfoEx;
 					tmpEvent.events = EPOLLIN | EPOLLOUT | EPOLLET;
-					INFO("fd=%d events=%d", newFd, tmpEvent.events);
 					epoll_ctl(m_epollFD, EPOLL_CTL_ADD, newFd, &tmpEvent);
 				}
 
 			}
 			else if (SOCKET_TYPE_CLIENT == pInfo->type)
 			{
-				INFO("TESTETS fd:%d event:%d", pInfo->fd, events[i].events);
 				// 已经建立连接socket进行通信
 				if (events[i].events & EPOLLIN)
 				{
-					INFO("fd=%d c->s info", pInfo->fd);
+					INFO("read fd=%d c->s info", pInfo->fd);
 					socketReadyInfo.fd = pInfo->fd;
 					socketReadyInfo.type = 1;
 					m_readQueue[threadIndex++]->write((char*)&socketReadyInfo, headLen);
